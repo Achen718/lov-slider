@@ -4,18 +4,22 @@ import type { NextPage } from 'next'
 import sliderStyles from '../../styles/Slider.module.css'
 
 interface Props {
-  city: string;
+  cityName: string;
+	currentCity: string;
 	description: string;
 	creatures?: HTMLImageElement;
 }
 
-const Slider: NextPage<Props> = ({ city, description, creatures }) => {
+const Slider: NextPage<Props> = ({ cityName, currentCity, description, creatures }) => {
   return (
     <div className={sliderStyles.container}>
       {/* header title / current locatio<div className="desc-section">*/}
 			<div className={sliderStyles.row}>
 				<div className={sliderStyles.col}>
-					{city} Current location
+					{cityName}
+				</div>
+				<div className={sliderStyles.col}>
+					{currentCity}
 				</div>
 			</div>
 			{/* desc / level / creatures*/}
@@ -30,7 +34,7 @@ const Slider: NextPage<Props> = ({ city, description, creatures }) => {
 				</div>
 				<div className={sliderStyles.col}>
 					<p className="title">Creatures</p>
-					<div>icons here</div>
+					<div>creature icons here</div>
 				</div>
 			</div>
 
