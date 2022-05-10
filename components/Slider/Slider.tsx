@@ -1,7 +1,7 @@
 
 import { useSprings, animated } from '@react-spring/web'
 import type { NextPage } from 'next'
-import sliderStyles from '../../styles/Slider.module.css'
+import sliderStyles from '../../styles/Slider.module.scss'
 
 interface Props {
   cityName: string;
@@ -22,16 +22,20 @@ const Slider: NextPage<Props> = ({ cityName, currentCity, description, creatures
 					{currentCity}
 				</div>
 			</div>
+
 			{/* desc / level / creatures*/}
 			<div className={sliderStyles.row}>
+				{/* About */}
 				<div className={sliderStyles.col}>
 					<p className="title">About</p>
 					<p>{description}</p>
 				</div>
+				{/* Unlock level */}
 				<div className={sliderStyles.col}>
 					<p className="title">To Unlock</p>
 					<p>Level 'X' reach level 9 to unlock</p>
 				</div>
+				{/* creatures */}
 				<div className={sliderStyles.col}>
 					<p className="title">Creatures</p>
 					<div>creature icons here</div>
@@ -39,9 +43,13 @@ const Slider: NextPage<Props> = ({ cityName, currentCity, description, creatures
 			</div>
 
 			{/* see more btn */}
-			<div className={sliderStyles.row}>see more btn</div>
+			<div className={sliderStyles.row}>
+				<p>see more btn</p>
+			</div>
 			{/* home btn */}
-			<button className={sliderStyles.row}>home btn</button>
+			<div className={sliderStyles.row}>
+				<button>home btn</button>
+			</div>
     </div>
   )
 }
