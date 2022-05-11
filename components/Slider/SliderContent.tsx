@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import sliderStyles from '../../styles/SliderContent.module.scss'
@@ -61,4 +60,4 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description
   )
 }
 
-export default Slider
+export default SliderContent
