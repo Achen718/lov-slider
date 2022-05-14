@@ -3,7 +3,7 @@ $gutter: 15px;
 $auto: auto;
 
 .container {
-	max-width: 1140px;
+	background-color: red;
 	width: $full-width;
 	padding-right: $gutter;
 	padding-left: $gutter;
@@ -38,4 +38,7 @@ $auto: auto;
 }
 .header {
 	color: red;
+}
+.cityName {
+	color: white;
 }
