@@ -1,0 +1,67 @@
+@mixin slider-buttons($left-right) {
+	position: absolute;
+	bottom: 50%;
+	z-index: 2;
+	#{$left-right}: 0;
+}
+
+.carousel {
+	// position: relative;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.inner {
+	white-space: nowrap;
+	// transition: transform 0.3s;
+}
+.prev {
+	@include slider-buttons(left)
+}
+.next {
+	@include slider-buttons(right)
+}
+.carouselItem {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	// height: 20px;
+	// background-color: blue;
+	color: white;
+}
+// .carouselItem {
+// 	display: none;
+
+// 	&Hidden {
+// 		@extend .carouselItem;
+// 	}
+// 	&Visible {
+// 		display: block;
+// 		animation: fadeVisibility 0.5s;
+// 	}
+
+// 	img {
+// 		width: 100%;
+// 		max-width: 600px;
+// 		height: auto;
+// 	}
+// }
+
+// .carouselBtns {
+// 	button {
+// 		border-radius: 50px;
+// 		background-color: white;
+// 		border: 0;
+// 		font-weight: bold;
+// 		cursor: pointer;
+// 		width: 40px;
+// 		height: 40px;
+
+// 		&#prev {
+// 			margin-left: 20px;
+// 		}
+// 		&#next {
+// 			margin-right: 20px;
+// 		}
+// 	}
+// }
