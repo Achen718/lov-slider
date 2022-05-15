@@ -1,6 +1,7 @@
 $full-width: 100%;
 $gutter: 15px;
 $auto: auto;
+$title: 25px;
 
 .container {
 	background-color: red;
@@ -35,10 +36,27 @@ $auto: auto;
 	min-height: 1px;
 	padding-right: $gutter;
 	padding-left: $gutter;
+
+	&.currentLocation {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
 }
 .header {
 	color: red;
 }
-.cityName {
+.cityTitle {
 	color: white;
+	font-size: 4em;
+}
+
+.creatures {
+	.icons {
+		height: 25px;
+		width: 25px;
+		background-color: #bbb;
+		border-radius: 50%;
+		display: inline-block;
+	}
 }

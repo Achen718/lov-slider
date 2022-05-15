@@ -16,7 +16,6 @@ const Slider: NextPage = forwardRef((props:any, ref) => {
 	
   return (
 		// content inside slider
-		
 		<div>
 			<Arrows/>
 				<p>Slide Number: {count}</p>

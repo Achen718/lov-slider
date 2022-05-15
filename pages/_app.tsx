@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import React, { useRef, useEffect, Children } from 'react'
-import Carousel, { CarouselItem } from '../components/Slider/Carousel'
+import Carousel from '../components/Slider/Carousel'
 import SliderContent from '../components/Slider/SliderContent'
 import PrevArrow from '../components/Slider/Arrows/PrevArrow'
 import NextArrow from '../components/Slider/Arrows/NextArrow'
@@ -23,13 +23,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 		{/* <PrevArrow /> */}
 		<button className="prev" onClick={() => ref.current.prevSlide()}>prev</button>
 		<Carousel ref={ref}>
-			{/* pass index props? */}
-			{/* <CarouselItem> */}
-				<SliderContent cityName="tecta"/>
-			{/* </CarouselItem> */}
-			{/* <CarouselItem> */}
-				<SliderContent cityName="ayena" />
-			{/* </CarouselItem> */}
+			{/* add dynamic props */}
+				<SliderContent
+				 cityName="Tecta"
+				 description="Stretching to the south of Caerras,
+				  Tecta is the only civilized and advanced basecamp
+					across the world. With buildings"
+					currentLocation=""
+				/>
+				<SliderContent
+				 cityName="Ayena" 
+				 currentLocation=""
+				/>
 		</Carousel>
 		<button className="prev" onClick={() => ref.current.nextSlide()}>ncxt</button>
 		{/* <NextArrow /> */}
