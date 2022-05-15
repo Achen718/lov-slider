@@ -9,11 +9,6 @@ interface Props {
 	creatures?: HTMLImageElement;
 }
 
-const cities = [
-	'Tecta',
-	'Ayena'
-];
-
 const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description, creatures }) => {
   return (
 		// content inside slider

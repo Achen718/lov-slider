@@ -15,9 +15,6 @@ interface RefObject {
 function MyApp({ Component, pageProps }: AppProps) {
 	const ref = useRef<RefObject>(null);
 
-
-	
-
   return (
 	<>
 	{/* add layout */}
@@ -27,12 +24,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<button className="prev" onClick={() => ref.current.prevSlide()}>prev</button>
 		<Carousel ref={ref}>
 			{/* pass index props? */}
-			<CarouselItem>
+			{/* <CarouselItem> */}
 				<SliderContent cityName="tecta"/>
-			</CarouselItem>
-			<CarouselItem>
+			{/* </CarouselItem> */}
+			{/* <CarouselItem> */}
 				<SliderContent cityName="ayena" />
-			</CarouselItem>
+			{/* </CarouselItem> */}
 		</Carousel>
 		<button className="prev" onClick={() => ref.current.nextSlide()}>ncxt</button>
 		{/* <NextArrow /> */}
