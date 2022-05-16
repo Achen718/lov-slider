@@ -4,13 +4,12 @@ $auto: auto;
 $title: 25px;
 
 .container {
-	background-color: red;
 	width: $full-width;
 	padding-right: $gutter;
 	padding-left: $gutter;
 	margin-right: $auto;
 	margin-left: $auto;
-	// height: 100vh;
+
 	// display: flex;
 	// flex-direction: column;
 	// justify-content: end;
@@ -32,7 +31,6 @@ $title: 25px;
 	flex-grow: 1;
 	max-width: $full-width;
 	position: relative;
-	width: $full-width;
 	min-height: 1px;
 	padding-right: $gutter;
 	padding-left: $gutter;

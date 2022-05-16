@@ -3,8 +3,7 @@ import type { AppProps } from 'next/app'
 import React, { useRef, useEffect, Children } from 'react'
 import Carousel from '../components/Slider/Carousel'
 import SliderContent from '../components/Slider/SliderContent'
-import PrevArrow from '../components/Slider/Arrows/PrevArrow'
-import NextArrow from '../components/Slider/Arrows/NextArrow'
+import Layout from '../components/Layout'
 import { useSprings, animated } from '@react-spring/web'
 
 interface RefObject {
@@ -18,25 +17,34 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
 	<>
 	{/* add layout */}
-		<Component {...pageProps} />
-
+		
+		<Layout>
+			<Component {...pageProps} />
 		{/* <PrevArrow /> */}
-		<button className="prev" onClick={() => ref.current.prevSlide()}>prev</button>
+		<div className="buttons">
+			<button className="prev" onClick={() => ref.current.prevSlide()}>prev</button>
+			<button className="prev" onClick={() => ref.current.nextSlide()}>ncxt</button>
+		</div>
+		
 		<Carousel ref={ref}>
 			{/* add dynamic props */}
 				<SliderContent
 				 cityName="Tecta"
 				 description="Stretching to the south of Caerras,
 				  Tecta is the only civilized and advanced basecamp
-					across the world. With buildings"
+					across the world. With buildings..."
 					currentLocation=""
 				/>
 				<SliderContent
 				 cityName="Ayena" 
+				 description="Lorem ipsum, or lipsum as it is sometimes 
+				 known, is dummy text used in laying out print, graphic 
+				 or web designs... "
 				 currentLocation=""
 				/>
 		</Carousel>
-		<button className="prev" onClick={() => ref.current.nextSlide()}>ncxt</button>
+		
+		</Layout>
 		{/* <NextArrow /> */}
 	</>
 	)

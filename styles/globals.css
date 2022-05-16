@@ -9,7 +9,7 @@ body {
 }
 /* temp */
 #__next {
-	height: 340px;
+	height: 100vh;
 }
 
 a {
@@ -17,8 +17,20 @@ a {
   text-decoration: none;
 }
 p {
+	white-space: initial;
 	margin: 0;
 }
 * {
   box-sizing: border-box;
+}
+
+/* temp */
+.buttons {
+	top: 50%;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	-webkit-box-pack: justify;
+	justify-content: space-between;
 }

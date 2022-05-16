@@ -1,11 +1,15 @@
+// mixins
 @mixin slider-buttons($left-right) {
 	position: absolute;
 	bottom: 50%;
 	z-index: 2;
 	#{$left-right}: 0;
 }
+// variables
+$full-width: 100%;
 
 .carousel {
+	width: $full-width;
 	height: 100%;
 	position: relative;
 	margin: 0 auto;
@@ -13,6 +17,7 @@
 
 	.inner {
 		white-space: nowrap;
+		padding: 2rem;
 		// transition: transform 0.3s;
 	}
 }
@@ -27,7 +32,8 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 100%;
+	width: $full-width;
+	height: inherit;
 	// height: 20px;
 	// background-color: blue;
 	color: white;
