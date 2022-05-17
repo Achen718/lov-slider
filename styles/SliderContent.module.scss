@@ -12,14 +12,34 @@
 	background-color: $bg-color;
 	border-radius: $border-rad;
 }
+@mixin chevron($border-color, $chev-size, $transform, $left-right, $margin) {
+	border-style: solid;
+	border-color: $border-color;
+	border-image: initial;
+	border-width: 0px 5px 5px 0px;
+	display: inline-block;
+	padding: 3px;
+	height: 20px;
+	width: 20px;
+	transform: $transform;
+	margin-#{$left-right}: $margin;
+}
+@mixin hover-effect($opacity) {
+	opacity: $opacity;
+}
 
 // variables
 $full-width: 100%;
 $gutter: 15px;
 $auto: auto;
 
+// colors
+$light-blue: #a7bed9;
+$dark-blue: #1D2733;
+
 // desktop
 .container {
+	max-width: 1140px;
 	width: $full-width;
 	padding-right: $gutter;
 	padding-left: $gutter;
@@ -52,6 +72,12 @@ $auto: auto;
 		align-items: center;
 	}
 }
+.moveTo {
+	border: solid 2px #a7bed942;
+	border-radius: 5px;
+	padding: 0.75rem 2.5rem;
+	color: $light-blue;
+}
 .descRow {
 	padding: 2rem 0;
 
@@ -62,18 +88,17 @@ $auto: auto;
 	.wrapper {
 		background: #222;
 		display: inline-flex;
-		height: 30px;
 		transform: rotate(45deg);
-		width: 30px;
+		margin-left: 1.25rem;
 
 		.levelIcon {
 			color: #fff;
 			display: inline-flex;
-			height: 30px;
+			height: 2.5rem;
 			transform: rotate(-45deg);
 			justify-content: center;
 			align-items: center;
-			width: 30px;
+			width: 2.5rem;
 		}
 	}
 	.level {
@@ -96,14 +121,15 @@ $auto: auto;
 	display: flex;
 
 	.icons {
-		@include  circles(3.5rem, #1b2129, 50%);
+		@include  circles(4.5rem, #1b2129, 50%);
 		margin: 0 0.25rem;
+		color: $light-blue;
 	}
 }
 .cityIcon {
 	// temp color
-	color: #a7bed9;
-	@include  circles(5rem, #1b2129, 50%)
+	color: $light-blue;
+	@include  circles(5.5rem, #1b2129, 50%)
 }
 
 // buttons
@@ -113,14 +139,32 @@ $auto: auto;
 }
 // imported on app.js/temp
 .prev {
-	@include  circles(5rem, #485d73, 50%);
-	color: white;
+	@include  circles(5rem, #354257, 50%);
+	cursor: pointer;
 	opacity: 0.6;
-	border: none;
+
+	&:hover {
+		@include hover-effect(1);
+	}
+
+	& > i {
+		@include chevron($light-blue, 1.25rem, rotate(135deg), left, 0.625rem)
+	}
 }
 .next {
-	@extend .prev;
+	@include  circles(5rem, #354257, 50%);
+	cursor: pointer;
+	opacity: 0.6;
+
+	&:hover {
+		@include hover-effect(1);
+	}
+
+	i {
+		@include chevron($light-blue, 1.25rem, rotate(-45deg), right, 0.625rem)
+	}
 }
+
 .seeMore {
 	background: transparent;
 	border: none;
@@ -131,10 +175,10 @@ $auto: auto;
 }
 .homeBtn {
 	width: 100%;
-	background-color: #1E2833;
+	background-color: $dark-blue;
 	padding: 1.5rem 0;
 	border-radius: 9px;
-	color: #a7bed9;
+	color: $light-blue;
 	border: none;
 	text-align: center;
 }

@@ -14,15 +14,17 @@ $full-width: 100%;
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
-	max-width: 1140px;
+	
 
 	.inner {
 		white-space: nowrap;
 		padding: 0 2rem;
-		transition: transform 0.3s;
 		position: absolute;
 		width: 100%;
 		height: 100%;
+		background-size: cover;
+		// overlay effect
+		box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.6);
 	}
 }
 

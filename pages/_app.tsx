@@ -18,13 +18,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
 	<>
 	{/* add layout */}
-		
 		<Layout>
 			<Component {...pageProps} />
-		{/* <PrevArrow /> */}
+		{/* componentize*/}
 		<div className="buttons">
-			<button className={prev} onClick={() => ref.current.prevSlide()}>prev</button>
-			<button className={next} onClick={() => ref.current.nextSlide()}>next</button>
+			<a className={prev} onClick={() => ref.current.prevSlide()}>
+				<i></i>
+			</a>
+			<a className={next} onClick={() => ref.current.nextSlide()}>
+				<i></i>
+			</a>
 		</div>
 		
 		<Carousel ref={ref}>

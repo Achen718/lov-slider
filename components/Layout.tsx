@@ -6,19 +6,20 @@ import layoutStyles from '../styles/Layout.module.scss'
 
 interface Props {
 	children?: React.ReactNode | React.ReactNode[];
+	i: number;
 }
 
-const Layout: NextPage<Props> = ({children}) => {
+const bg = [
+	'/test.png',
+	'/123.jpg'
+]
+
+const Layout: NextPage<Props> = ({children, i}) => {
+	console.log(i)
 	return (
 		<div className={layoutStyles.overlay}>
 			<div className={layoutStyles.bgWrap}>
-				<Image
-					alt="Mountains"
-					src="/test.png"
-					layout="fill"
-					objectFit="cover"
-					quality={100}
-				/>
+		
 			</div>
 			<div className={layoutStyles.container}>
 				<main className={layoutStyles.main}>

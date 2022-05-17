@@ -8,14 +8,22 @@ interface Props {
 	children: React.ReactNode | React.ReactNode[];
 }
 
+const bgImages = [
+	'/test.png',
+	'/123.jpg'
+]
+
 const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 	const [ activeIndex, setActiveSlide ] = useState(0);
 
 	const springs = useSprings(
 		children.length,
-		children.map((activeIndex) => ({
+		children.map(() => ({
 			styles: activeIndex,
-			// add easings config(ease in out)
+			config: {
+				duration: 500,
+				easing: easings.easeInOutQuart,
+			},
 		}))
 	)
 
@@ -36,7 +44,7 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 
 	useImperativeHandle(ref, () => ({
 		prevSlide,
-		nextSlide
+		nextSlide,
 	}))
 
 	const prevSlide = () => updateSlide(activeIndex - 1)
@@ -47,19 +55,30 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 	// Add currentLocation logic
 
   return (
+		<>
+
     <div className={sliderStyles.carousel}>
+
 			{springs.map(({ styles } , i: number) => (
 				<animated.div key={i} className={sliderStyles.inner} style={{
-					transform: styles.to(
+					transform: styles
+					.to(
 						// scrolls -100% to next slide, can use window width
-						() => `translate3d(${(activeIndex - i) * -100}%, 0, 0)`
-					)
+						(active) => `translate3d(${(active - i) * -100}%, 0, 0)`
+					),
+					opacity: styles
+					.to(
+						[0.1, 0.3, 0.5, 0.7, 0.8], [0.7, 0.1, 0.3, 0.5, 0.7]
+						),
+					backgroundImage: `url(${bgImages[i]})`,
 				}}>
 					{childSlides[i]}
 				</animated.div>
         )
       )}
+
     </div>
+		</>
   )
 }
 
