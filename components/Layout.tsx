@@ -7,6 +7,7 @@ import layoutStyles from '../styles/Layout.module.scss'
 interface Props {
 	children?: React.ReactNode | React.ReactNode[];
 }
+
 const Layout: NextPage<Props> = ({children}) => {
 	return (
 		<div className={layoutStyles.overlay}>

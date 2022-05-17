@@ -14,11 +14,15 @@ $full-width: 100%;
 	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
+	max-width: 1140px;
 
 	.inner {
 		white-space: nowrap;
-		padding: 2rem;
-		// transition: transform 0.3s;
+		padding: 0 2rem;
+		transition: transform 0.3s;
+		position: absolute;
+		width: 100%;
+		height: 100%;
 	}
 }
 

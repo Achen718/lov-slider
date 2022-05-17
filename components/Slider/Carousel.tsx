@@ -51,11 +51,9 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 			{springs.map(({ styles } , i: number) => (
 				<animated.div key={i} className={sliderStyles.inner} style={{
 					transform: styles.to(
+						// scrolls -100% to next slide, can use window width
 						() => `translate3d(${(activeIndex - i) * -100}%, 0, 0)`
-					),
-					position: "absolute",
-					width: "100%",
-					height: "100%"
+					)
 				}}>
 					{childSlides[i]}
 				</animated.div>

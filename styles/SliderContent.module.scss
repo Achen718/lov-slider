@@ -1,19 +1,30 @@
+// mixins
+@mixin title-text($font-size, $color) {
+	font-size: $font-size;
+	color: $color;
+}
+@mixin circles($height-width, $bg-color, $border-rad) {
+	display: inherit;
+	justify-content: center;
+	align-items: center;
+	height: $height-width;
+	width: $height-width;
+	background-color: $bg-color;
+	border-radius: $border-rad;
+}
+
+// variables
 $full-width: 100%;
 $gutter: 15px;
 $auto: auto;
-$title: 25px;
 
+// desktop
 .container {
 	width: $full-width;
 	padding-right: $gutter;
 	padding-left: $gutter;
 	margin-right: $auto;
 	margin-left: $auto;
-
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: end;
-	// margin-bottom: 50px;
 }
 .row {
 	display: -webkit-box;
@@ -41,20 +52,89 @@ $title: 25px;
 		align-items: center;
 	}
 }
-.header {
-	color: red;
+.descRow {
+	padding: 2rem 0;
+
+	.title {
+		@include  title-text(1.5rem, white);
+		padding: 1rem 0;
+	}
+	.wrapper {
+		background: #222;
+		display: inline-flex;
+		height: 30px;
+		transform: rotate(45deg);
+		width: 30px;
+
+		.levelIcon {
+			color: #fff;
+			display: inline-flex;
+			height: 30px;
+			transform: rotate(-45deg);
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+		}
+	}
+	.level {
+		display: inline-block;
+		margin-left: 1rem;
+	}
+
 }
-.cityTitle {
-	color: white;
-	font-size: 4em;
+.cityHeading {
+	display: inline-flex;
+	align-items: center;
+}
+.city {
+	@include title-text(3rem, white);
+	margin-left: 0.75rem;
 }
 
+
 .creatures {
+	display: flex;
+
 	.icons {
-		height: 25px;
-		width: 25px;
-		background-color: #bbb;
-		border-radius: 50%;
-		display: inline-block;
+		@include  circles(3.5rem, #1b2129, 50%);
+		margin: 0 0.25rem;
 	}
+}
+.cityIcon {
+	// temp color
+	color: #a7bed9;
+	@include  circles(5rem, #1b2129, 50%)
+}
+
+// buttons
+.buttonRow {
+	@extend .row;
+	justify-content: center;
+}
+// imported on app.js/temp
+.prev {
+	@include  circles(5rem, #485d73, 50%);
+	color: white;
+	opacity: 0.6;
+	border: none;
+}
+.next {
+	@extend .prev;
+}
+.seeMore {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	text-decoration: underline;
+	color: white;
+	margin-bottom: 3rem;
+}
+.homeBtn {
+	width: 100%;
+	background-color: #1E2833;
+	padding: 1.5rem 0;
+	border-radius: 9px;
+	color: #a7bed9;
+	border: none;
+	text-align: center;
 }

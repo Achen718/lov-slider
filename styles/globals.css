@@ -19,6 +19,7 @@ a {
 p {
 	white-space: initial;
 	margin: 0;
+	color: #a7bed9;
 }
 * {
   box-sizing: border-box;
@@ -29,6 +30,7 @@ p {
 	top: 50%;
 	position: absolute;
 	width: 100%;
+	max-width: calc(1120px + 10%);
 	z-index: 1;
 	display: flex;
 	-webkit-box-pack: justify;

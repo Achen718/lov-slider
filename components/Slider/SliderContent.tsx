@@ -16,54 +16,55 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description
 		// content inside slider
     <div className={contentStyles.container}>
       {/* header title / current locatio<div className="desc-section">*/}
-			<div className={`${contentStyles.row} ${contentStyles.header}`}>
-				<div className={contentStyles.col}>
-					{/* add icon */}
-					<span>icon</span>
-					<p className={contentStyles.cityTitle}>{cityName}</p>
+			<div className={contentStyles.row}>
+				<div className={`${contentStyles.col} ${contentStyles.cityHeading}`}>
+					<span className={contentStyles.cityIcon}>icon</span>
+					<span className={contentStyles.city}>{cityName}</span>
 				</div>
 				<div className={`${contentStyles.col} ${contentStyles.currentLocation}`}>
 					<button className={contentStyles.currentLocation}>{currentLocation ? "You are here" : "Go to "}</button>
 				</div>
 			</div>
-			{/* hr */}
+
 			<hr/>
-			{/* desc / level / creatures, Add HR or border bottom to separate rows*/}
-			<div className={contentStyles.row}>
-				{/* About */}
+			{/* Info section*/}
+			<div className={`${contentStyles.row} ${contentStyles.descRow}`}>
 				<div className={contentStyles.col}>
-					<p className="description-title">About</p>
+					<p className={contentStyles.title}>About</p>
 					<p className="description">{description}</p>
 				</div>
-				{/* Unlock level */}
+				{/* level */}
 				<div className={contentStyles.col}>
-					<p className="level">To Unlock</p>
-					{/* pass player current level */}
-					<p>Reach level 9 to unlock</p>
+					<p className={contentStyles.title}>To Unlock</p>
+					{/* Req. level/Current level */}
+					<span className={contentStyles.wrapper}>
+						<span className={contentStyles.levelIcon}>9</span>
+					</span>
+					<p className={contentStyles.level}>Reach level 9 to unlock</p>
 				</div>
-				{/* creatures */}
 				<div className={contentStyles.col}>
-					<p className="title">Creatures</p>
+					<p className={contentStyles.title}>Creatures</p>
 					<div className={contentStyles.creatures}>
-						{/* Creatue thumbnails */}
+						{/* thumbnails -- todo: map/clone icons for less redundancy */}
 						<span className={contentStyles.icons}></span>
 						<span className={contentStyles.icons}></span>
 						<span className={contentStyles.icons}></span>
-						{/* show more -- # of creatures by location */}
+						{/* show more -- {#} of creatures by location */}
 						<span className={contentStyles.icons}>+6</span>
 					</div>
 				</div>
 			</div>
-			{/* hr */}
+
 			<hr/>
-			{/* see more btn */}
-			<div className={contentStyles.row}>
+			{/* componentize */}
+			<div className={contentStyles.buttonRow}>
+				{/* add show more content function */}
 				<button className={contentStyles.seeMore}>See More</button>
 			</div>
 			{/* home btn */}
-			<div className={contentStyles.row}>
+			<div className={contentStyles.buttonRow}>
 				<Link href="/">
-					<button>Back to Home (icon)</button>
+						<a className={contentStyles.homeBtn}>Back to Home (icon)</a>
 				</Link>
 			</div>
     </div>
