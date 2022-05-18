@@ -10,7 +10,6 @@ interface RefObject {
 
 const Home: NextPage = () => {
   return (
-		// Add routes/pages to Slider
     <div>
 			Home
     </div>

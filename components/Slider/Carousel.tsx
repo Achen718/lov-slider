@@ -8,9 +8,10 @@ interface Props {
 	children: React.ReactNode | React.ReactNode[];
 }
 
+// background images
 const bgImages = [
-	'/test.png',
-	'/123.jpg'
+	'/bg1.png',
+	'/bg2.jpg'
 ]
 
 const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
@@ -21,7 +22,7 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 		children.map(() => ({
 			styles: activeIndex,
 			config: {
-				duration: 500,
+				duration: 1400,
 				easing: easings.easeInOutQuart,
 			},
 		}))
@@ -58,7 +59,6 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 		<>
 
     <div className={sliderStyles.carousel}>
-
 			{springs.map(({ styles } , i: number) => (
 				<animated.div key={i} className={sliderStyles.inner} style={{
 					transform: styles
@@ -68,7 +68,7 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 					),
 					opacity: styles
 					.to(
-						[0.1, 0.3, 0.5, 0.7, 0.8], [0.7, 0.1, 0.3, 0.5, 0.7]
+						[0.1, 0.3, 0.5, 0.7, 0.8], [0.7, 0.1, 0.3, 0.4, 0.7]
 						),
 					backgroundImage: `url(${bgImages[i]})`,
 				}}>
@@ -76,7 +76,6 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 				</animated.div>
         )
       )}
-
     </div>
 		</>
   )

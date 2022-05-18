@@ -4,7 +4,7 @@
 	color: $color;
 }
 @mixin circles($height-width, $bg-color, $border-rad) {
-	display: inherit;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: $height-width;
@@ -28,10 +28,14 @@
 	opacity: $opacity;
 }
 
-// variables
+// Gen. variables
 $full-width: 100%;
 $gutter: 15px;
 $auto: auto;
+
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 576px;
+$breakpoint-mobile-sm: 480px;
 
 // colors
 $light-blue: #a7bed9;
@@ -45,39 +49,41 @@ $dark-blue: #1D2733;
 	padding-left: $gutter;
 	margin-right: $auto;
 	margin-left: $auto;
-}
-.row {
-	display: -webkit-box;
-	display: -ms-flexbox;
+	align-self: flex-end;
+	padding-bottom: 2rem;
+	
+	.row {
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin-right: -#{$gutter};
 	margin-left: -#{$gutter};
-}
-.col {
-	flex-basis: 0;
-	-webkit-box-flex: 1;
-	-ms-flex-positive: 1;
-	flex-grow: 1;
-	max-width: $full-width;
-	position: relative;
-	min-height: 1px;
-	padding-right: $gutter;
-	padding-left: $gutter;
 
-	&.currentLocation {
-		display: flex;
-		justify-content: flex-end;
-		align-items: center;
+		.col {
+			flex-basis: 0;
+			flex-grow: 1;
+			max-width: $full-width;
+			position: relative;
+			min-height: 1px;
+			padding-right: $gutter;
+			padding-left: $gutter;
+		
+			&.currentLocation {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+			}
+		}
 	}
 }
+
+// current loc btn
 .moveTo {
 	border: solid 2px #a7bed942;
 	border-radius: 5px;
 	padding: 0.75rem 2.5rem;
 	color: $light-blue;
 }
+// descriptions
 .descRow {
 	padding: 2rem 0;
 
@@ -85,6 +91,7 @@ $dark-blue: #1D2733;
 		@include  title-text(1.5rem, white);
 		padding: 1rem 0;
 	}
+
 	.wrapper {
 		background: #222;
 		display: inline-flex;
@@ -101,12 +108,14 @@ $dark-blue: #1D2733;
 			width: 2.5rem;
 		}
 	}
+
 	.level {
 		display: inline-block;
 		margin-left: 1rem;
 	}
 
 }
+
 .cityHeading {
 	display: inline-flex;
 	align-items: center;
@@ -116,12 +125,11 @@ $dark-blue: #1D2733;
 	margin-left: 0.75rem;
 }
 
-
 .creatures {
 	display: flex;
 
 	.icons {
-		@include  circles(4.5rem, #1b2129, 50%);
+		@include  circles(3.5rem, #1b2129, 50%);
 		margin: 0 0.25rem;
 		color: $light-blue;
 	}
@@ -134,6 +142,8 @@ $dark-blue: #1D2733;
 
 // buttons
 .buttonRow {
+	// negate row gutter
+	padding: 0 15px;
 	@extend .row;
 	justify-content: center;
 }
@@ -182,3 +192,47 @@ $dark-blue: #1D2733;
 	border: none;
 	text-align: center;
 }
+
+// mobile -  tablet
+.row {
+	&.descRow {
+		@media (max-width: $breakpoint-mobile) {
+			display: block;
+		}
+
+		@media (max-width: $breakpoint-tablet) {
+			.col {
+				&:first-child {
+					flex: 0 0 100%;
+				}
+			}
+		}
+	}
+
+	&.cityRow {
+		@media (max-width: $breakpoint-mobile-sm) {
+			margin: 0 auto;
+			width: 100%;
+			display: block;
+
+			.cityHeading {
+				flex-direction: column;
+				width: 100%;
+
+				.city {
+					margin: 0;
+				}
+			}
+			.col.currentLocation {
+				justify-content: center;
+			}	
+
+		}
+	}
+}
+
+
+
+// SliderContent_col__kcd76 SliderContent_cityHeading__oAGgv flex grow 0
+// cityheading display block
+// cityIcon margin auto

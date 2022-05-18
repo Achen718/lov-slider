@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import React, { useRef, useEffect, Children } from 'react'
 import Carousel from '../components/Slider/Carousel'
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	<>
 	{/* add layout */}
 		<Layout>
-			<Component {...pageProps} />
+			{/* <Component {...pageProps} /> */}
 		{/* componentize*/}
 		<div className="buttons">
 			<a className={prev} onClick={() => ref.current.prevSlide()}>
@@ -33,7 +33,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<Carousel ref={ref}>
 			{/* To do*/}
 				{/* pass bg prop, bg based on page index */}
-				{/* current location boolean? */}
 				<SliderContent
 				 cityName="Tecta"
 				 description="Stretching to the south of Caerras,

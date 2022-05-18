@@ -5,18 +5,19 @@ import contentStyles from '../../styles/SliderContent.module.scss'
 
 interface Props {
   cityName?: string;
-	currentLocation?: string;
+	currentLocationName?: string;
+	currentLocation?: boolean;
 	description?: string;
 	creatures?: HTMLImageElement;
 }
 
-const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description, creatures }) => {
+const SliderContent: NextPage<Props> = ({ cityName, currentLocationName, currentLocation, description, creatures }) => {
 	
   return (
 		// content inside slider
     <div className={contentStyles.container}>
       {/* header title / current locatio<div className="desc-section">*/}
-			<div className={contentStyles.row}>
+			<div className={`${contentStyles.row} ${contentStyles.cityRow}`}>
 				<div className={`${contentStyles.col} ${contentStyles.cityHeading}`}>
 					<span className={contentStyles.cityIcon}>icon</span>
 					<span className={contentStyles.city}>{cityName}</span>
@@ -32,7 +33,7 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description
 			<div className={`${contentStyles.row} ${contentStyles.descRow}`}>
 				<div className={contentStyles.col}>
 					<p className={contentStyles.title}>About</p>
-					<p className="description">{description}</p>
+					<p>{description}</p>
 				</div>
 				{/* level */}
 				<div className={contentStyles.col}>
@@ -47,9 +48,9 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocation, description
 					<p className={contentStyles.title}>Creatures</p>
 					<div className={contentStyles.creatures}>
 						{/* thumbnails -- todo: map/clone icons for less redundancy */}
-						<span className={contentStyles.icons}></span>
-						<span className={contentStyles.icons}></span>
-						<span className={contentStyles.icons}></span>
+						<span className={contentStyles.icons}>{creatures}</span>
+						<span className={contentStyles.icons}>{creatures}</span>
+						<span className={contentStyles.icons}>{creatures}</span>
 						{/* show more -- {#} of creatures by location */}
 						<span className={contentStyles.icons}>+6</span>
 					</div>
