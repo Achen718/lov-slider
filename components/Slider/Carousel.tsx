@@ -14,7 +14,8 @@ const bgImages = [
 	'/bg2.jpg'
 ]
 
-const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
+// eslint-disable-next-line react/display-name
+const Carousel: NextPage<Props> = React.forwardRef(({ children = [] }, ref) => {
 	const [ activeIndex, setActiveSlide ] = useState(0);
 
 	const springs = useSprings(
@@ -79,6 +80,6 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
     </div>
 		</>
   )
-}
+})
 
-export default forwardRef(Carousel)
+export default Carousel
