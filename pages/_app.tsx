@@ -4,7 +4,7 @@ import React, { useRef, useEffect, Children } from 'react'
 import Carousel from '../components/Slider/Carousel'
 import SliderContent from '../components/Slider/SliderContent'
 import Layout from '../components/Layout'
-import { prev, next } from '../styles/SliderContent.module.scss'
+import buttonStyles from '../styles/SliderContent.module.scss'
 import { useSprings, animated } from '@react-spring/web'
 
 interface RefObject {
@@ -22,10 +22,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 			{/* <Component {...pageProps} /> */}
 		{/* componentize*/}
 		<div className="buttons">
-			<a className={prev} onClick={() => ref.current.prevSlide()}>
+			<a className={buttonStyles.prev} onClick={() => ref.current.prevSlide()}>
 				<i></i>
 			</a>
-			<a className={next} onClick={() => ref.current.nextSlide()}>
+			<a className={buttonStyles.next} onClick={() => ref.current.nextSlide()}>
 				<i></i>
 			</a>
 		</div>
