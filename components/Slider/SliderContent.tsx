@@ -48,9 +48,9 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocationName, current
 					<p className={contentStyles.title}>Creatures</p>
 					<div className={contentStyles.creatures}>
 						{/* thumbnails -- todo: map/clone icons for less redundancy */}
-						<span className={contentStyles.icons}>{creatures}</span>
-						<span className={contentStyles.icons}>{creatures}</span>
-						<span className={contentStyles.icons}>{creatures}</span>
+						<span className={contentStyles.icons}></span>
+						<span className={contentStyles.icons}></span>
+						<span className={contentStyles.icons}></span>
 						{/* show more -- {#} of creatures by location */}
 						<span className={contentStyles.icons}>+6</span>
 					</div>
