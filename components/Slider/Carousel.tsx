@@ -1,5 +1,4 @@
 import React, { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
-import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSprings, animated, config, easings } from '@react-spring/web'
 import sliderStyles from '../../styles/Slider.module.scss'
@@ -8,14 +7,18 @@ interface Props {
 	children?: React.ReactNode[];
 }
 
+interface RefType {
+	prevSlide: () => void;
+	nextSlide: () => void;
+}
+
 // background images
 const bgImages = [
 	'/bg1.png',
 	'/bg2.jpg'
 ]
 
-// eslint-disable-next-line react/display-name
-const Carousel: NextPage<Props> = React.forwardRef(({ children = [] }, ref) => {
+const Carousel = React.forwardRef<RefType, Props>(({ children = [] }, ref) => {
 	const [ activeIndex, setActiveSlide ] = useState(0);
 
 	const springs = useSprings(
@@ -81,5 +84,7 @@ const Carousel: NextPage<Props> = React.forwardRef(({ children = [] }, ref) => {
 		</>
   )
 })
+
+Carousel.displayName = "Carousel";
 
 export default Carousel
