@@ -7,13 +7,9 @@ import Layout from '../components/Layout'
 import buttonStyles from '../styles/SliderContent.module.scss'
 import { useSprings, animated } from '@react-spring/web'
 
-interface RefObject {
-	prevSlide: () => void;
-	nextSlide: () => void;
-}
 
 function MyApp({ Component, pageProps }: AppProps) {
-	const ref = useRef<RefObject>(null);
+	const ref = useRef<any>(null);
 
   return (
 	<>
@@ -38,19 +34,16 @@ function MyApp({ Component, pageProps }: AppProps) {
 				 description="Stretching to the south of Caerras,
 				  Tecta is the only civilized and advanced basecamp
 					across the world. With buildings..."
-					currentLocation=""
 				/>
 				<SliderContent
 				 cityName="Ayena" 
 				 description="Lorem ipsum, or lipsum as it is sometimes 
 				 known, is dummy text used in laying out print, graphic 
 				 or web designs... "
-				 currentLocation=""
 				/>
 		</Carousel>
 		
 		</Layout>
-		{/* <NextArrow /> */}
 	</>
 	)
 }
