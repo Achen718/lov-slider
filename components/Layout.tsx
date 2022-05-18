@@ -1,8 +1,6 @@
 import React from 'react'
 import type { NextPage } from 'next'
-import Image from 'next/image'
 import layoutStyles from '../styles/Layout.module.scss'
-// import Background from '../public/test.png'
 
 interface Props {
 	children?: React.ReactNode | React.ReactNode[];
