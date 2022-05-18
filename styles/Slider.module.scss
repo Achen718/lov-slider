@@ -1,67 +1,55 @@
+// mixins
 @mixin slider-buttons($left-right) {
 	position: absolute;
 	bottom: 50%;
 	z-index: 2;
 	#{$left-right}: 0;
 }
+// variables
+$full-width: 100%;
 
 .carousel {
-	// position: relative;
+	width: $full-width;
+	height: 100%;
+	position: relative;
 	margin: 0 auto;
 	overflow: hidden;
+	
+
+	.inner {
+		display: flex;
+		justify-content: center;
+		white-space: nowrap;
+		padding: 0 5rem;
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		// overlay effect
+		box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.6);
+
+		.carouselItem {
+			max-width: 1140px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: $full-width;
+			height: inherit;
+			color: white;
+		}
+	}
+
+	@media (max-width: 992px) {
+		.inner {
+			padding: 0 1.5rem;
+		}
+	}
 }
-.inner {
-	white-space: nowrap;
-	// transition: transform 0.3s;
-}
+
+// import to global
 .prev {
 	@include slider-buttons(left)
 }
 .next {
 	@include slider-buttons(right)
 }
-.carouselItem {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	// height: 20px;
-	// background-color: blue;
-	color: white;
-}
-// .carouselItem {
-// 	display: none;
-
-// 	&Hidden {
-// 		@extend .carouselItem;
-// 	}
-// 	&Visible {
-// 		display: block;
-// 		animation: fadeVisibility 0.5s;
-// 	}
-
-// 	img {
-// 		width: 100%;
-// 		max-width: 600px;
-// 		height: auto;
-// 	}
-// }
-
-// .carouselBtns {
-// 	button {
-// 		border-radius: 50px;
-// 		background-color: white;
-// 		border: 0;
-// 		font-weight: bold;
-// 		cursor: pointer;
-// 		width: 40px;
-// 		height: 40px;
-
-// 		&#prev {
-// 			margin-left: 20px;
-// 		}
-// 		&#next {
-// 			margin-right: 20px;
-// 		}
-// 	}
-// }

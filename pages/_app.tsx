@@ -1,10 +1,10 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import React, { useRef, useEffect, Children } from 'react'
-import Carousel, { CarouselItem } from '../components/Slider/Carousel'
+import Carousel from '../components/Slider/Carousel'
 import SliderContent from '../components/Slider/SliderContent'
-import PrevArrow from '../components/Slider/Arrows/PrevArrow'
-import NextArrow from '../components/Slider/Arrows/NextArrow'
+import Layout from '../components/Layout'
+import { prev, next } from '../styles/SliderContent.module.scss'
 import { useSprings, animated } from '@react-spring/web'
 
 interface RefObject {
@@ -18,20 +18,38 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
 	<>
 	{/* add layout */}
-		<Component {...pageProps} />
-
-		{/* <PrevArrow /> */}
-		<button className="prev" onClick={() => ref.current.prevSlide()}>prev</button>
+		<Layout>
+			{/* <Component {...pageProps} /> */}
+		{/* componentize*/}
+		<div className="buttons">
+			<a className={prev} onClick={() => ref.current.prevSlide()}>
+				<i></i>
+			</a>
+			<a className={next} onClick={() => ref.current.nextSlide()}>
+				<i></i>
+			</a>
+		</div>
+		
 		<Carousel ref={ref}>
-			{/* pass index props? */}
-			{/* <CarouselItem> */}
-				<SliderContent cityName="tecta"/>
-			{/* </CarouselItem> */}
-			{/* <CarouselItem> */}
-				<SliderContent cityName="ayena" />
-			{/* </CarouselItem> */}
+			{/* To do*/}
+				{/* pass bg prop, bg based on page index */}
+				<SliderContent
+				 cityName="Tecta"
+				 description="Stretching to the south of Caerras,
+				  Tecta is the only civilized and advanced basecamp
+					across the world. With buildings..."
+					currentLocation=""
+				/>
+				<SliderContent
+				 cityName="Ayena" 
+				 description="Lorem ipsum, or lipsum as it is sometimes 
+				 known, is dummy text used in laying out print, graphic 
+				 or web designs... "
+				 currentLocation=""
+				/>
 		</Carousel>
-		<button className="prev" onClick={() => ref.current.nextSlide()}>ncxt</button>
+		
+		</Layout>
 		{/* <NextArrow /> */}
 	</>
 	)

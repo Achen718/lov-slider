@@ -3,19 +3,28 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import { useSprings, animated, config, easings } from '@react-spring/web'
 import sliderStyles from '../../styles/Slider.module.scss'
-import profilePic from '../../public/vercel.svg'
 
 interface Props {
 	children: React.ReactNode | React.ReactNode[];
 }
+
+// background images
+const bgImages = [
+	'/bg1.png',
+	'/bg2.jpg'
+]
 
 const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 	const [ activeIndex, setActiveSlide ] = useState(0);
 
 	const springs = useSprings(
 		children.length,
-		children.map((index) => ({
-			styles: index,
+		children.map(() => ({
+			styles: activeIndex,
+			config: {
+				duration: 1400,
+				easing: easings.easeInOutQuart,
+			},
 		}))
 	)
 
@@ -24,41 +33,51 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
 			{child}
 		</div>))
 
-	useImperativeHandle(ref, () => ({
-		prevSlide,
-		nextSlide
-	}))
-	
-	const updateSlide = (newSlide: number) => {
-		if(newSlide < 0) {
-			newSlide = 0;
-		} else if (newSlide >= React.Children.count(children)) {
-			newSlide = React.Children.count(children) - 1;
+	const updateSlide = (slideIndex: number) => {
+		if(slideIndex < 0) {
+			slideIndex = 0;
+		} else if (slideIndex >= React.Children.count(children)) {
+			slideIndex = React.Children.count(children) - 1;
 		}
 
-		setActiveSlide(newSlide);
+		setActiveSlide(slideIndex);
 	}
-	
-	// add useeffect
+
+	useImperativeHandle(ref, () => ({
+		prevSlide,
+		nextSlide,
+	}))
+
 	const prevSlide = () => updateSlide(activeIndex - 1)
 	const nextSlide = () => updateSlide(activeIndex + 1)
-	
+
+	// Todo
+	// add useeffect
+	// Add currentLocation logic
+
   return (
+		<>
 
     <div className={sliderStyles.carousel}>
 			{springs.map(({ styles } , i: number) => (
 				<animated.div key={i} className={sliderStyles.inner} style={{
-					transform: styles.to(
-						() => `translate3d(${i * 100}%, 0, 0)`
+					transform: styles
+					.to(
+						// scrolls -100% to next slide, can use window width
+						(active) => `translate3d(${(active - i) * -100}%, 0, 0)`
 					),
-					position: "absolute",
-					width: "100%",
+					opacity: styles
+					.to(
+						[0.1, 0.3, 0.5, 0.7, 0.8], [0.7, 0.1, 0.3, 0.4, 0.7]
+						),
+					backgroundImage: `url(${bgImages[i]})`,
 				}}>
 					{childSlides[i]}
 				</animated.div>
         )
       )}
     </div>
+		</>
   )
 }
 

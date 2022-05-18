@@ -9,15 +9,9 @@ interface RefObject {
 }
 
 const Home: NextPage = () => {
-	// const ref = useRef<RefObject>(null);
-
   return (
-		// Add routes/pages to Slider
     <div>
-			{/* pass page title into cityname */}
-			{/* <button className="right" onClick={() => ref.current.increment()}>Left Arrow</button>
-			<Slider ref={ref}/>
-			<button className="right" onClick={() => ref.current.increment()}>Right Arrow</button> */}
+			Home
     </div>
   )
 }

@@ -1,44 +1,238 @@
+// mixins
+@mixin title-text($font-size, $color) {
+	font-size: $font-size;
+	color: $color;
+}
+@mixin circles($height-width, $bg-color, $border-rad) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: $height-width;
+	width: $height-width;
+	background-color: $bg-color;
+	border-radius: $border-rad;
+}
+@mixin chevron($border-color, $chev-size, $transform, $left-right, $margin) {
+	border-style: solid;
+	border-color: $border-color;
+	border-image: initial;
+	border-width: 0px 5px 5px 0px;
+	display: inline-block;
+	padding: 3px;
+	height: 20px;
+	width: 20px;
+	transform: $transform;
+	margin-#{$left-right}: $margin;
+}
+@mixin hover-effect($opacity) {
+	opacity: $opacity;
+}
+
+// Gen. variables
 $full-width: 100%;
 $gutter: 15px;
 $auto: auto;
 
+$breakpoint-tablet: 768px;
+$breakpoint-mobile: 576px;
+$breakpoint-mobile-sm: 480px;
+
+// colors
+$light-blue: #a7bed9;
+$dark-blue: #1D2733;
+
+// desktop
 .container {
-	background-color: red;
+	max-width: 1140px;
 	width: $full-width;
 	padding-right: $gutter;
 	padding-left: $gutter;
 	margin-right: $auto;
 	margin-left: $auto;
-	// height: 100vh;
-	// display: flex;
-	// flex-direction: column;
-	// justify-content: end;
-	// margin-bottom: 50px;
-}
-.row {
-	display: -webkit-box;
-	display: -ms-flexbox;
+	align-self: flex-end;
+	padding-bottom: 2rem;
+	
+	.row {
 	display: flex;
-	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
 	margin-right: -#{$gutter};
 	margin-left: -#{$gutter};
+
+		.col {
+			flex-basis: 0;
+			flex-grow: 1;
+			max-width: $full-width;
+			position: relative;
+			min-height: 1px;
+			padding-right: $gutter;
+			padding-left: $gutter;
+		
+			&.currentLocation {
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+			}
+		}
+	}
 }
-.col {
-	flex-basis: 0;
-	-webkit-box-flex: 1;
-	-ms-flex-positive: 1;
-	flex-grow: 1;
-	max-width: $full-width;
-	position: relative;
-	width: $full-width;
-	min-height: 1px;
-	padding-right: $gutter;
-	padding-left: $gutter;
+
+// current loc btn
+.moveTo {
+	border: solid 2px #a7bed942;
+	border-radius: 5px;
+	padding: 0.75rem 2.5rem;
+	color: $light-blue;
 }
-.header {
-	color: red;
+// descriptions
+.descRow {
+	padding: 2rem 0;
+
+	.title {
+		@include  title-text(1.5rem, white);
+		padding: 1rem 0;
+	}
+
+	.wrapper {
+		background: #222;
+		display: inline-flex;
+		transform: rotate(45deg);
+		margin-left: 1.25rem;
+
+		.levelIcon {
+			color: #fff;
+			display: inline-flex;
+			height: 2.5rem;
+			transform: rotate(-45deg);
+			justify-content: center;
+			align-items: center;
+			width: 2.5rem;
+		}
+	}
+
+	.level {
+		display: inline-block;
+		margin-left: 1rem;
+	}
+
 }
-.cityName {
+
+.cityHeading {
+	display: inline-flex;
+	align-items: center;
+}
+.city {
+	@include title-text(3rem, white);
+	margin-left: 0.75rem;
+}
+
+.creatures {
+	display: flex;
+
+	.icons {
+		@include  circles(3.5rem, #1b2129, 50%);
+		margin: 0 0.25rem;
+		color: $light-blue;
+	}
+}
+.cityIcon {
+	// temp color
+	color: $light-blue;
+	@include  circles(5.5rem, #1b2129, 50%)
+}
+
+// buttons
+.buttonRow {
+	// negate row gutter
+	padding: 0 15px;
+	@extend .row;
+	justify-content: center;
+}
+// imported on app.js/temp
+.prev {
+	@include  circles(5rem, #354257, 50%);
+	cursor: pointer;
+	opacity: 0.6;
+
+	&:hover {
+		@include hover-effect(1);
+	}
+
+	& > i {
+		@include chevron($light-blue, 1.25rem, rotate(135deg), left, 0.625rem)
+	}
+}
+.next {
+	@include  circles(5rem, #354257, 50%);
+	cursor: pointer;
+	opacity: 0.6;
+
+	&:hover {
+		@include hover-effect(1);
+	}
+
+	i {
+		@include chevron($light-blue, 1.25rem, rotate(-45deg), right, 0.625rem)
+	}
+}
+
+.seeMore {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	text-decoration: underline;
 	color: white;
+	margin-bottom: 3rem;
 }
+.homeBtn {
+	width: 100%;
+	background-color: $dark-blue;
+	padding: 1.5rem 0;
+	border-radius: 9px;
+	color: $light-blue;
+	border: none;
+	text-align: center;
+}
+
+// mobile -  tablet
+.row {
+	&.descRow {
+		@media (max-width: $breakpoint-mobile) {
+			display: block;
+		}
+
+		@media (max-width: $breakpoint-tablet) {
+			.col {
+				&:first-child {
+					flex: 0 0 100%;
+				}
+			}
+		}
+	}
+
+	&.cityRow {
+		@media (max-width: $breakpoint-mobile-sm) {
+			margin: 0 auto;
+			width: 100%;
+			display: block;
+
+			.cityHeading {
+				flex-direction: column;
+				width: 100%;
+
+				.city {
+					margin: 0;
+				}
+			}
+			.col.currentLocation {
+				justify-content: center;
+			}	
+
+		}
+	}
+}
+
+
+
+// SliderContent_col__kcd76 SliderContent_cityHeading__oAGgv flex grow 0
+// cityheading display block
+// cityIcon margin auto

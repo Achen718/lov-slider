@@ -1,10 +1,12 @@
 .container {
-  padding: 0 2rem;
+	height: inherit;
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+	// add padding for container
+	height: inherit;
+  // padding: 0 5rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -42,7 +44,7 @@
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3.5em;
 }
 
 .title,
@@ -113,4 +115,16 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.overlay {
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+.bgWrap {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: -1;
 }
