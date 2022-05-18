@@ -5,7 +5,7 @@ import { useSprings, animated, config, easings } from '@react-spring/web'
 import sliderStyles from '../../styles/Slider.module.scss'
 
 interface Props {
-	children: React.ReactNode | React.ReactNode[];
+	children?: React.ReactNode[];
 }
 
 // background images
@@ -81,4 +81,4 @@ const Carousel: NextPage<Props> = ({ children = [] }, ref) => {
   )
 }
 
-export default React.forwardRef(Carousel)
+export default forwardRef(Carousel)
