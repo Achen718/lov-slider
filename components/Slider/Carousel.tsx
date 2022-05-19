@@ -52,6 +52,8 @@ const Carousel = React.forwardRef<RefType, Props>(({ children = [] }, ref) => {
 		nextSlide,
 	}))
 
+console.log(activeIndex)
+
 	const prevSlide = () => updateSlide(activeIndex - 1)
 	const nextSlide = () => updateSlide(activeIndex + 1)
 

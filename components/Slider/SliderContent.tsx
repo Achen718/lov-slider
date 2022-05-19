@@ -24,7 +24,7 @@ const SliderContent: NextPage<Props> = ({ cityName, currentLocationName, current
 				</div>
 				<div className={`${contentStyles.col} ${contentStyles.currentLocation}`}>
 					{/* pass prop */}
-					<a className={contentStyles.moveTo}>{currentLocation ? "You are here (icon)" : "You are here"}</a>
+					<a className={contentStyles.moveTo}>{currentLocation ? "You are here (icon)" : "Move to Location"}</a>
 				</div>
 			</div>
 
